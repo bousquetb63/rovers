@@ -7,6 +7,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="navbar-3 w-nav" data-animation="over-right" data-collapse="medium" data-duration="400">
+    <div class="container-4 w-container">
+      <a class="w-nav-brand" href="#"><img src="images/logo.png">
+      </a>
+      <nav class="w-nav-menu" role="navigation"><a class="login w-nav-link" href="#" id="login">Log In</a><a class="signup w-nav-link" href="#" id="signup">Sign Up</a>
+        <div class="explore w-dropdown" data-delay="30" data-hover="1" data-ix="new-interaction-2">
+          <div class="login w-clearfix w-dropdown-toggle" data-ix="new-interaction-2">
+            <div class="text-block-5">Explore</div>
+            <div class="icon w-icon-dropdown-toggle"></div>
+          </div>
+          <nav class="dropdown-list w-dropdown-list" data-ix="new-interaction"><a class="dropdown-link w-dropdown-link" href="#">Products</a><a class="dropdown-link w-dropdown-link" href="#">Services</a><a class="dropdown-link w-dropdown-link" href="#">Stores</a><a class="dropdown-link w-dropdown-link" href="#">Restraunts</a><a class="dropdown-link w-dropdown-link" href="#">Events</a><a class="dropdown-link w-dropdown-link" href="#">Shelters</a><a class="dropdown-link w-dropdown-link" href="#">Hotel</a>
+          </nav>
+        </div>
+      </nav>
+      <div class="w-nav-button">
+        <div class="w-icon-nav-menu"></div>
+      </div>
+    </div>
+  </div>
 <%= yield %>
 
 </body>
