@@ -1,38 +1,65 @@
-<h1>Reviews</h1>
-<% if user_signed_in? %>
-  <%= link_to 'New Review', new_review_path %>
-  </br>
-  <%= link_to 'Log Out', destroy_user_session_path, :method => :delete %>
-  </br>
-  <%= link_to 'My Reviews', reviews_path %>
-  </br>
-     <% if @reviews.present? %>
-         <% @reviews.each do |review| %>
-            <%= review.name %>
-         <% end %>
-     <% end %>
-<% else %>
-  <%= link_to 'Sign In', new_user_session_path %>
-  reviews
-  <%= link_to 'Sign Up', new_user_registration_path %>
-<% end %>
-    <table>
-      <tbody>
-        <% @reviews.each do |post| %>
-          <tr>
-            <td><h2><%= post.name %></h2></td>
-            <td><%= truncate(post.description, :length => 20) %></td>
-            <td><%= link_to 'View', post %></td>
-            <% if user_signed_in? %>
-              <% if post.user_id = current_user.id %>
-                <td><%= link_to 'Edit', edit_review_path(post) %></td>
-                <td><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<div class="container">
+  <h1>Reviews</h1>
+  <% if user_signed_in? %>
+    <%= link_to 'New Review', new_review_path %>
+    </br>
+    <%= link_to 'Logout', destroy_user_session_path, :method => :delete %>
+    </br>
+    <%= link_to 'My Reviews', reviews_path %>
+    </br>
+       <% if @reviews.present? %>
+           <% @reviews.each do |review| %>
+              <%= review.name %>
+           <% end %>
+       <% end %>
+  <% else %>
+    <%= link_to 'Sign In', new_user_session_path %></br>
+    <%= link_to 'Sign Up', new_user_registration_path %>
+  <% end %>
+        <table>
+          <thead>
+            <tr>
+                <th>Name</th>
+                <th>Item Name</th>
+                <th>Item Price</th>
+            </tr>
+          </thead>
+  
+          <tbody>
+            <tr>
+              <td>Alvin</td>
+              <td>Eclair</td>
+              <td>$0.87</td>
+            </tr>
+            <tr>
+              <td>Alan</td>
+              <td>Jellybean</td>
+              <td>$3.76</td>
+            </tr>
+            <tr>
+              <td>Jonathan</td>
+              <td>Lollipop</td>
+              <td>$7.00</td>
+            </tr>
+          </tbody>
+        </table>
+      <table>
+        <tbody>
+          <% @reviews.each do |post| %>
+            <tr>
+              <td><h2><%= post.name %></h2></td>
+              <td><%= truncate(post.description, :length => 20) %></td>
+              <td><%= link_to 'View', post %></td>
+              <% if user_signed_in? %>
+                <% if post.user_id = current_user.id %>
+                  <td><%= link_to 'Edit', edit_review_path(post) %></td>
+                  <td><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <% end %>
               <% end %>
-            <% end %>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-    
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+</div>
     
 

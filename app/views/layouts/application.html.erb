@@ -5,28 +5,53 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-  <div class="navbar-3 w-nav" data-animation="over-right" data-collapse="medium" data-duration="400">
-    <div class="container-4 w-container">
-      <a class="w-nav-brand" href="#"><img src="images/logo.png">
-      </a>
-      <nav class="w-nav-menu" role="navigation"><a class="login w-nav-link" href="#" id="login">Log In</a><a class="signup w-nav-link" href="#" id="signup">Sign Up</a>
-        <div class="explore w-dropdown" data-delay="30" data-hover="1" data-ix="new-interaction-2">
-          <div class="login w-clearfix w-dropdown-toggle" data-ix="new-interaction-2">
-            <div class="text-block-5">Explore</div>
-            <div class="icon w-icon-dropdown-toggle"></div>
-          </div>
-          <nav class="dropdown-list w-dropdown-list" data-ix="new-interaction"><a class="dropdown-link w-dropdown-link" href="#">Products</a><a class="dropdown-link w-dropdown-link" href="#">Services</a><a class="dropdown-link w-dropdown-link" href="#">Stores</a><a class="dropdown-link w-dropdown-link" href="#">Restraunts</a><a class="dropdown-link w-dropdown-link" href="#">Events</a><a class="dropdown-link w-dropdown-link" href="#">Shelters</a><a class="dropdown-link w-dropdown-link" href="#">Hotel</a>
-          </nav>
-        </div>
-      </nav>
-      <div class="w-nav-button">
-        <div class="w-icon-nav-menu"></div>
-      </div>
-    </div>
-  </div>
-<%= yield %>
+  <div class="background-image"></div>
+  <ul id="dropdown1" class="dropdown-content">
+  <li><a href="#!">one</a></li>
+  <li><a href="#!">two</a></li>
+  <li class="divider"></li>
+  <li><a href="#!">three</a></li>
+</ul>
+  <nav class="deep-orange accent-2" role="navigation">
+    <div class="nav-wrapper container"><%= image_tag("logo.png", :alt => "logo") %>
+      <ul class="right hide-on-med-and-down">
+          <% if user_signed_in? %>
+            <li><%= link_to 'New Review', new_review_path %></li>
+            <li><%= link_to 'My Reviews', reviews_path %></li>
+            <li><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></li>
+          <% else %>
+            <li><%= link_to 'Home', root_path %></li>
+            <li><%= link_to 'Log In', new_user_session_path %></li>
+            <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+          <% end %>
+      </ul>
 
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+    </div>
+  </nav>
+  <ul id="slide-out" class="side-nav">
+    <li><div class="userView">
+      <div class="background">
+      </div>
+      <a href="#!user"><%= image_tag("logo.png", :alt => "logo") %></a>
+      <a href="#!name"><span class="white-text name">John Doe</span></a>
+      <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
+    </div></li>
+    <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+    <li><a href="#!">Second Link</a></li>
+    <li><div class="divider"></div></li>
+    <li><a class="subheader">Subheader</a></li>
+    <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+  </ul>
+<div class="container-fluid">
+  <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+  <%= yield %>
+</div>
+<a class="btn" onclick="Materialize.toast('I am a toast', 4000)">Toast!</a>
 </body>
 </html>
