@@ -12,6 +12,7 @@
 
 <p>
   <strong>Rating:</strong>
+  <div class="star" data-score= <%= @review.rating %> ></div>
   <%= @review.rating %>
 </p>
 
@@ -31,3 +32,10 @@
   <% end %>
 <% end %>
 <%= link_to 'Back', root_path %>
+<script>
+  $('#star').raty({
+  readOnly : true,
+  starOn  : 'images/bone.png',
+  starOff : 'images/nobone.png'
+});
+</script>

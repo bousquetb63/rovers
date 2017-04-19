@@ -16,16 +16,23 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
+    <p>Category</p>
+    <%= f.select(:category, option_for_select([['Products', 'Products'],['Services', 'Services'],['Stores', 'Stores'],['Restraunts', 'Restraunts'],['Parks', 'Parks'],['Events', 'Events'],['Shelters', 'Shelters'],['Hotels', 'Hotels']])) %>
+  </div>
+  <div class="field">
+    <p>Pros, Woof Woof</p><br>
+    <%= f.text_area :pros, :class => "materialize-textarea" %>
+  </div>
+  <div class="field">
+    <p>Cons, Bone to pick</p><br>
+    <%= f.text_area :cons, :class => "materialize-textarea" %>
+  </div>
+  <div class="field">
     <%= f.label :description %><br>
     <%= f.text_area :description, :class => "materialize-textarea" %>
   </div>
   <div class="field">
-    <%= f.label :rating %><br>
-    <%= f.number_field :rating %>
-  </div>
-  <div class="field">
-    <%= f.label :dogfriendly %><br>
-    <%= f.check_box :dogfriendly %>
+    <div id="star"></div>
   </div>
   <%= f.hidden_field :user_id, :value => current_user.id %>
   <div class="actions">
@@ -33,3 +40,11 @@
   </div>
 <% end %>
 </div>
+
+<script>
+  $('#star').raty({
+  score: function() {
+    return $(this).attr('data-rating');
+  }
+});
+</script>

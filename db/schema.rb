@@ -11,18 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170418162403) do
+ActiveRecord::Schema.define(version: 20170419041519) do
 
   create_table "reviews", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.integer  "rating"
-    t.boolean  "dogfriendly"
     t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.text     "pros"
     t.text     "cons"
+    t.string   "category"
   end
 
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id"
