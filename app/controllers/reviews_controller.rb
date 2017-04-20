@@ -19,6 +19,7 @@ class ReviewsController < ApplicationController
   # GET /reviews/new
   def new
     @review = Review.new
+    params.require(@review).permit(:pros, :cons, :category)
   end
 
   # GET /reviews/1/edit
