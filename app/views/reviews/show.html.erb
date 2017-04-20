@@ -3,23 +3,16 @@
 <p>
   <strong>Name:</strong>
   <%= @review.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
+  <%= @review.category %>
+  <%= @review.pros %>
+  <%= @review.cons %>
   <%= @review.description %>
 </p>
 
 <p>
-  <strong>Rating:</strong>
-  <div class="star" data-score= <%= @review.rating %> ></div>
-  <%= @review.rating %>
+  <div class="star-rating" data-score= <%= @review.rating %> ></div>
 </p>
 
-<p>
-  <strong>Dogfriendly:</strong>
-  <%= @review.dogfriendly %>
-</p>
 
 <p>
   <strong>User:</strong>
@@ -33,9 +26,11 @@
 <% end %>
 <%= link_to 'Back', root_path %>
 <script>
-  $('#star').raty({
-  readOnly : true,
-  starOn  : 'images/bone.png',
-  starOff : 'images/nobone.png'
-});
+    $('.star-rating').raty({
+      path: '/assets/',
+      readOnly: true,
+      score: function() {
+            return $(this).attr('data-score');
+    }
+  });
 </script>

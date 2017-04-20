@@ -12,39 +12,54 @@
     </div>
   <% end %>
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <p class="flow-text">Name</p>
+    <%= f.text_field :name, :class => "grey lighten-2" %>
   </div>
   <div class="field">
-    <p>Category</p>
-    <%= f.select(:category, option_for_select([['Products', 'Products'],['Services', 'Services'],['Stores', 'Stores'],['Restraunts', 'Restraunts'],['Parks', 'Parks'],['Events', 'Events'],['Shelters', 'Shelters'],['Hotels', 'Hotels']])) %>
+    <p class="flow-text">Category</p>
+    <%= f.text_field :category, :id => "autocomplete-input", :class => "grey lighten-2 autocomplete" %>
   </div>
   <div class="field">
-    <p>Pros, Woof Woof</p><br>
-    <%= f.text_area :pros, :class => "materialize-textarea" %>
+    <p class="flow-text">Pros, Woof Woof</p><br>
+    <%= f.text_area :pros, :class => "materialize-textarea grey lighten-2" %>
   </div>
   <div class="field">
-    <p>Cons, Bone to pick</p><br>
-    <%= f.text_area :cons, :class => "materialize-textarea" %>
+    <p class="flow-text">Cons, Bone to pick</p><br>
+    <%= f.text_area :cons, :class => "materialize-textarea grey lighten-2" %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description, :class => "materialize-textarea" %>
+    <p class="flow-text">Description</p>
+    <%= f.text_area :description, :class => "materialize-textarea grey lighten-2" %>
   </div>
   <div class="field">
-    <div id="star"></div>
+    <p class="flow-text">Rating</p>
+    <div class="col-sm-6" id='star-rating'></div>  
   </div>
+  </br>
   <%= f.hidden_field :user_id, :value => current_user.id %>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Submit', :class => "waves-effect waves-light btn" %>
   </div>
 <% end %>
 </div>
-
 <script>
-  $('#star').raty({
-  score: function() {
-    return $(this).attr('data-rating');
-  }
+$('#star-rating').raty({
+    path: '/assets',
+    scoreName: 'review[rating]'
 });
+$(document).ready(function(){
+  $('input.autocomplete').autocomplete({
+    data: {
+	  "Products": null,
+	  "Services": null,
+	  "Stores": null,
+	  "Restraunts": null,
+	  "Parks": null,
+	  "Events": null,
+	  "Shelters": null,
+	  "Hotels": null
+	}
+  });
+});
+
 </script>

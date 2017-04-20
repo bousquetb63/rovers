@@ -14,6 +14,8 @@
 //= require jquery_ujs 
 //= require turbolinks
 //= require materialize-sprockets
+//= require jquery.raty
+//= require ratyrate
 
 $(function(){
     $(".button-collapse").sideNav();
